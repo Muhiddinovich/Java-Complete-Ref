@@ -4,8 +4,8 @@ class Main {
         boolean t=true;
         System.out.println("Before the return");
         if(t) return; //return to caller
-        
+        //if(t) is important here, return cannnot be here alone. 
+        //This would give unreachable code error
         System.out.println("This won't execute.");
-        
     }
 }
