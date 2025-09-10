@@ -1,0 +1,30 @@
+class Box{
+    double width;
+    double height;
+    double depth;
+    
+    //Contstructor for the class Box
+    Box(double w, double h, double d){
+       width=w;
+       height=h;
+       depth=d;
+    }
+    
+    //Compute volume and return value
+    double volume(){
+        return width*height*depth;
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        Box mybox1=new Box(10,20,15);
+        Box mybox2=new Box(3,6,9);
+        
+        double volume;
+        volume=mybox1.volume();
+        System.out.println("Volume is "+ volume);
+        
+        volume=mybox2.volume();
+        System.out.println("volume is "+ volume);
+    }
+}
