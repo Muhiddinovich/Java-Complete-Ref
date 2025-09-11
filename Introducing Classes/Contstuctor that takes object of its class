@@ -1,0 +1,53 @@
+class Box{
+    double width;
+    double height;
+    double depth;
+    
+    Box(double w, double h, double d){
+        width=w;
+        height=h;
+        depth=d;
+    }
+    Box(Box ob){ //Contructor with object as a parameter  
+        width=ob.width;
+        height=ob.height;
+        depth=ob.depth;
+    }
+    Box(){
+        width=-1;
+        height=-1;
+        depth=-1;
+    }
+    Box(double len){
+        width=height=depth=len;
+    }
+    
+    double volume(){
+        return width*height*depth;
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        System.out.println();
+        Box mybox1=new Box(10,20,15);
+        Box mybox2=new Box();
+        Box mybox3=new Box(7);
+        
+        double volume;
+        
+        volume=mybox1.volume();
+        System.out.println("Volume: "+volume);
+        
+        volume=mybox2.volume();
+        System.out.println("Volume: "+volume);
+        
+        volume=mybox3.volume();
+        System.out.println("Volume: "+volume);
+        
+        Box myclone = new Box(mybox1);
+        volume=myclone.volume();
+        System.out.println("Volume: "+volume);
+        
+    }
+}
