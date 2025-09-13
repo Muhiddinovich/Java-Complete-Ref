@@ -1,0 +1,11 @@
+class Main {
+    public static void main(String[] args) {
+        String obj1="First string";
+        String obj2="Second string";
+        String obj3=obj1+" and "+obj2;
+        
+        System.out.println(obj1);
+        System.out.println(obj2);
+        System.out.println(obj3);
+    }
+}
