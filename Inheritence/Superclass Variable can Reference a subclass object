@@ -1,0 +1,68 @@
+//this program uses inheritence to extend Box
+
+class Box{
+    double width;
+    double height;
+    double depth;
+    
+    
+    //construct clone of an object
+    Box(Box ob){
+        width=ob.width;
+        height=ob.height;
+        depth=ob.depth;
+    }
+    
+    //constructor used when all dimenstions are specified
+    Box(double w, double h, double d){
+        width=w;
+        height=h;
+        depth=d;
+    }
+    //Constructed is used when no dimensions specified
+    Box(){
+        width=-1;
+        height=-1;
+        depth=-1;
+    }
+    
+    //when cube is created
+    Box(double len){
+        width=height=depth=len;
+    }
+    
+    //compute and return volume
+    double volume(){
+        return width*height*depth;
+    }
+}
+
+//Here, Box is extended to include weight
+class BoxWeight extends Box{
+    double weight; //Weight of box
+    BoxWeight(double w, double h, double d, double m){
+        width=w;
+        height=h;
+        depth=d;
+        weight=m;
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        BoxWeight weightbox= new BoxWeight(3,5,7,8.37);
+        Box plainbox=new Box();
+        double vol;
+        
+        vol=weightbox.volume();
+        System.out.println("Volume of the weightbox is: "+vol);
+        System.out.println("Weight of weightbox is: "+weightbox.weight);
+        System.out.println();
+        
+        plainbox=weightbox;
+        vol=plainbox.volume();
+        System.out.println("Volume of the plainbox is: "+vol);
+        
+        //following is invalid because plainbox has no knowledge of weight
+        // System.out.println("Weight of the plainbox is "+plainbox.weight);
+    }
+}
