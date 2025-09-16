@@ -1,0 +1,111 @@
+//Using super to call Superclass Constructor
+
+class Box{
+    private double width;
+    private double height;
+    private double depth;
+    
+    
+    //construct clone of an object
+    Box(Box ob){
+        width=ob.width;
+        height=ob.height;
+        depth=ob.depth;
+    }
+    
+    //constructor used when all dimenstions are specified
+    Box(double w, double h, double d){
+        width=w;
+        height=h;
+        depth=d;
+    }
+    //Constructed is used when no dimensions specified
+    Box(){
+        width=-1;
+        height=-1;
+        depth=-1;
+    }
+    
+    //when cube is created
+    Box(double len){
+        width=height=depth=len;
+    }
+    
+    //compute and return volume
+    double volume(){
+        return width*height*depth;
+    }
+}
+
+//BoxWeight uses super to initialize its Box attributes
+class BoxWeight extends Box{
+    
+    double weight; //Weight of box
+    
+    BoxWeight(BoxWeight ob){ //pass object to constructort
+        super(ob);
+        weight=ob.weight;
+    }
+    BoxWeight(double w, double h, double d, double m){
+       super(w,h,d); //Usage of super();
+       weight=m;
+    }
+    
+    BoxWeight(){ //Default constructor
+        super();
+        weight=-1;
+    }
+    
+    BoxWeight(double len, double m){ //constructor when cube is created
+        super(len);
+        weight=m;
+    }
+}
+
+//Add shipment costs
+class Shipment extends BoxWeight{
+    double cost;
+    
+    Shipment(Shipment ob){// pass object to constructor
+        super(ob);
+        cost=ob.cost;
+    }
+    
+    // Constructor when all parameters are specified
+    
+    Shipment(double w, double h, double d, double m, double c){
+        super(w,h,d,m);
+        cost=c;
+    }
+    
+    Shipment(){//default
+        super();
+        cost=-1;
+    }
+    
+    //Constructor when cube is created
+    Shipment(double len, double m, double c){
+        super(len, m);
+        cost=c;
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        Shipment shipment1=new Shipment(10, 20, 15,10,3.41);
+        Shipment shipment2=new Shipment(2,3,4,0.76, 1.28);
+        
+        double vol;
+        vol =shipment1.volume();
+        System.out.println("Volume of shipment1 = "+shipment1.volume());
+        System.out.println("Weight of shipment1 is "+ shipment1.weight);
+        System.out.println("Shipping cost: $"+shipment1.cost);
+        System.out.println();
+        
+        vol =shipment2.volume();
+        System.out.println("Volume of shipment2 = "+shipment2.volume());
+        System.out.println("Weight of shipment1 is "+ shipment2.weight);
+        System.out.println("Shipping cost: $"+shipment2.cost);
+        System.out.println();
+    }
+    
+}
