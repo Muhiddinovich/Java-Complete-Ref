@@ -1,0 +1,33 @@
+
+interface MyIf{
+    int getNumber(); //Standard interface meethod decleration
+    
+    default String getString(){ // a default implementation
+        return "Default String";
+    }
+}
+class MyIfImp implements MyIf{
+    public int getNumber(){
+        return 100;
+    }
+}
+
+class MyIfImp2 implements MyIf{
+    public int getNumber(){
+        return 100;
+    }
+    
+    public String getString(){
+        return "This is a different string";
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        MyIf obj=new MyIfImp();
+        MyIf obj2=new MyIfImp2();
+        System.out.println(obj.getNumber());
+        System.out.println(obj.getString());
+        System.out.println(obj2.getString());
+        System.out.println(obj2.getNumber());
+    }
+}
