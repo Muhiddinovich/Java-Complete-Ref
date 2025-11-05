@@ -1,0 +1,37 @@
+package Threads;
+
+public class VirtualThread {
+	public static void main(String[] args) throws Exception {
+	    Thread t = Thread.ofVirtual().start(() -> {
+	      System.out.println("Running in virtual thread: " + Thread.currentThread());
+	    });
+	    t.join();
+	  }
+
+}
+
+/*
+ * Virtual threads are lightweight threads introduced in Java 19+ (part of
+ * Project Loom).
+ * 
+ * 🔹 What they are
+ * 
+ * They’re like normal threads but managed by the JVM, not the OS — meaning
+ * thousands can run with very low memory use.
+ * 
+ * 🔹 Key points
+ * 
+ * Created with Thread.ofVirtual().
+ * 
+ * Use much less memory than platform threads.
+ * 
+ * Great for handling many concurrent tasks (like servers).
+ * 
+ * Very cheap to create.
+ * 
+ * Automatically parked when blocked (no CPU waste).
+ * 
+ * Same API as normal threads.
+ * 
+ * 👉 Use them for high concurrency (e.g., web servers, async tasks).
+ */
