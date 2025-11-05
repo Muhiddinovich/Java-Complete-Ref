@@ -11,8 +11,10 @@ public class BlockedStateInThreads {
 		BlockedStateInThreads e = new BlockedStateInThreads();
 		Thread t1 = new Thread(() -> e.task());
 		Thread t2 = new Thread(() -> e.task());
-
+		
+		System.out.println(t1.getState());
 		t1.start();
+		System.out.println(t1.getState());
 		Thread.sleep(100); // let t1 get the lock
 		t2.start();
 		Thread.sleep(100);
