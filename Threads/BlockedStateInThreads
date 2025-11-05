@@ -1,0 +1,23 @@
+package Threads;
+
+public class BlockedStateInThreads {
+
+	synchronized void task() {
+		while (true) {
+		} // keeps lock forever
+	}
+
+	public static void main(String[] args) throws Exception {
+		BlockedStateInThreads e = new BlockedStateInThreads();
+		Thread t1 = new Thread(() -> e.task());
+		Thread t2 = new Thread(() -> e.task());
+
+		t1.start();
+		Thread.sleep(100); // let t1 get the lock
+		t2.start();
+		Thread.sleep(100);
+
+		System.out.println(t2.getState()); // will print BLOCKED
+	}
+
+}
