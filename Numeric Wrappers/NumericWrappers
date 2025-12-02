@@ -1,0 +1,11 @@
+package numericWrappers;
+
+public class NumericWrappers {
+	public static void main(String[] args) {
+		Integer iObjectInteger = Integer.valueOf(100);
+		int i=iObjectInteger.intValue();
+		
+		System.out.println(i+" "+ iObjectInteger);
+	}
+
+}
