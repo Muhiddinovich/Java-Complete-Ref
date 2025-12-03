@@ -1,0 +1,15 @@
+package annotations;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
+public class Basics {
+	@Retention(RetentionPolicy.RUNTIME)
+	@interface MyAnno{
+		String str();
+		int val();
+	}
+	
+	@MyAnno(str="Annotation example", val=100)
+	public static void mymeth() {};
+}
